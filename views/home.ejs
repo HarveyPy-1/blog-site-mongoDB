@@ -1,0 +1,13 @@
+<%- include("partials/header.ejs") %>
+<h1><%= allPosts[0].name %></h1>
+<p><%= allPosts[0].postContent %></p>
+
+<% for( let i = 1; i < allPosts.length; i++ ) { %>
+     <h1><%= allPosts[i].name %></h1>
+    <!-- You can also use the truncate method from lodash in the node file -->
+    <p><%= allPosts[i].postContent.substring(0, 100) %>...<a href="/posts/<%= allPosts[i]._id %>">Read more</a> </p>
+<% } %>
+
+
+<!-- Post.title will show as "A%20new%20post" for example (%20 means empty space). But because we used lodash in the server, that will change to "a new post", also, the title from the posts list is also going to be "a new post", so it'll match. -->
+<%- include("partials/footer.ejs") %>
